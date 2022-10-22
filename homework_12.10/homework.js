@@ -9,11 +9,12 @@ let secondArg = process.argv[3]
 
 // Image used: https://images.freeimages.com/images/large-previews/a11/fall-pic-vermont-country-road-1568190.jpg
 
+const filename = path.basename(secondArg);
+const exts = ["jpg", "png", "jpeg", "webp"];
+const file_ext = filename.split(".").pop();
+
 // VALIDATIONS
-if ((firstArg.includes(".jpg") && secondArg.includes(".jpg")) || (firstArg.includes(".jpeg") && secondArg.includes(".jpeg")) || (firstArg.includes(".png") && secondArg.includes(".png")) || (firstArg.includes(".webp") && secondArg.includes(".webp"))) {
-  
-//                  Last portion of URL
-  const filename = path.basename(secondArg);
+if (exts.includes(file_ext)) {  
 
   const req = https.get(firstArg, (res) => {
 
@@ -45,4 +46,5 @@ if ((firstArg.includes(".jpg") && secondArg.includes(".jpg")) || (firstArg.inclu
 // Reseting process arguments
 process.argv.splice(2, 3);
 console.log(process.argv);
+
 
