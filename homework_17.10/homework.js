@@ -40,18 +40,16 @@ class Emitter {
       console.log(`${eventName} doesn't exist`);
     }
 
-    this.listeners[eventName].map(listener => {
-      listener(...args)
-    })
-
-
+    for (let i = 0; i < this._listeners[eventName].length; i++) {
+      this._listeners[eventName][i](...args);
+    }
   }
 }
 
 let testEmitter = new Emitter();
 
 // let eventFn = () => {
-//   console.log("Console.log event")
+//   console.log("Console.log event");
 // }
 
-// // testEmitter.on("Event1", eventFn)
+// testEmitter.on("Event1", eventFn);
